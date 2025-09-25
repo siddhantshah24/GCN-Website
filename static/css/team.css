@@ -1,0 +1,453 @@
+/* Team Page Styles */
+
+/* Hero Section */
+.team-hero {
+    padding: 4rem 0 2rem;
+    background: linear-gradient(135deg, rgba(140, 29, 64, 0.05) 0%, rgba(255, 198, 39, 0.05) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%238C1D40" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23FFC627" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%238C1D40" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%23FFC627" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%238C1D40" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.team-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.team-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+}
+
+.team-hero p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* About Section */
+.team-about {
+    padding: 4rem 0;
+    background: var(--bg-white);
+}
+
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Team Cards */
+.team-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(140, 29, 64, 0.08);
+    border: 1px solid rgba(140, 29, 64, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--asu-maroon), var(--asu-gold));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(140, 29, 64, 0.15);
+    border-color: rgba(255, 198, 39, 0.2);
+}
+
+.team-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Team Photos */
+.team-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 4px solid var(--asu-gold);
+    box-shadow: 0 8px 25px rgba(255, 198, 39, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.team-card:hover .team-photo {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 198, 39, 0.4);
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-photo img {
+    transform: scale(1.1);
+}
+
+/* Team Member Info */
+.team-card h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.team-card .position {
+    color: var(--asu-gold);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.team-card .year-major {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.team-card .description {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Hobby Section */
+.hobby-section {
+    background: linear-gradient(135deg, rgba(140, 29, 64, 0.03) 0%, rgba(255, 198, 39, 0.03) 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--asu-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.hobby-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 198, 39, 0.05) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.team-card:hover .hobby-section::before {
+    transform: translateX(100%);
+}
+
+.hobby-label {
+    color: var(--asu-maroon);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.hobby-text {
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--asu-maroon);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(140, 29, 64, 0.05);
+    border: 2px solid transparent;
+}
+
+.team-card .social-links a:hover {
+    color: white;
+    background: var(--asu-maroon);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(140, 29, 64, 0.3);
+    border-color: var(--asu-maroon);
+}
+
+/* Join Community Section */
+.join-community {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(140, 29, 64, 0.02) 0%, rgba(255, 198, 39, 0.02) 100%);
+    border-radius: 2rem;
+    border: 1px solid rgba(140, 29, 64, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.join-community::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%238C1D40" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.join-community > * {
+    position: relative;
+    z-index: 2;
+}
+
+.join-community h2 {
+    color: var(--asu-maroon);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.join-community .about-subtitle {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-community .btn {
+    background: linear-gradient(135deg, var(--asu-maroon) 0%, #a52a2a 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(140, 29, 64, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.join-community .btn:hover {
+    background: linear-gradient(135deg, var(--asu-gold) 0%, #ffd54f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 198, 39, 0.4);
+    color: var(--asu-maroon);
+}
+
+/* Optimized animations */
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Touch Device Detection and Hover Disabling */
+@media (hover: none) and (pointer: coarse) {
+    .team-card:hover,
+    .team-card .social-links a:hover,
+    .join-community .btn:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background: inherit !important;
+        color: inherit !important;
+    }
+
+    .team-card .social-links a:hover {
+        transform: scale(1) !important;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-hero {
+        padding: 3rem 0 2rem;
+    }
+    
+    .team-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .team-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .team-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .team-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .team-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .team-card .position {
+        font-size: 1rem;
+    }
+    
+    .join-community {
+        padding: 2rem 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .join-community h2 {
+        font-size: 2rem;
+    }
+    
+    .join-community .btn {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+    
+    /* Reduce animation intensity on mobile for better performance */
+    .team-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .team-card .social-links a:hover {
+        transform: translateY(-1px);
+    }
+    
+    .join-community .btn:hover {
+        transform: translateY(-1px);
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container {
+        padding: 0 1rem;
+    }
+    
+    .team-hero .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .team-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .team-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .team-photo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .hobby-section {
+        padding: 1rem;
+    }
+    
+    .join-community {
+        padding: 1.5rem 1rem;
+    }
+    
+    .join-community h2 {
+        font-size: 1.75rem;
+    }
+}

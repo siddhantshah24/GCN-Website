@@ -1,0 +1,212 @@
+/* Resources Page Styles */
+
+/* Hero Section */
+.resources-hero {
+    padding: 2rem 0;
+}
+
+/* Resources Section */
+.resources-section {
+    padding: 2rem 0;
+}
+
+.resources-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Resources Intro */
+.resources-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.resources-intro h2 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+}
+
+.resources-intro p {
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Resources Grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Resource Cards */
+.resource-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
+    border: 1px solid rgba(140, 29, 64, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.resource-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(140, 29, 64, 0.15), 0 10px 10px -5px rgba(140, 29, 64, 0.1);
+}
+
+/* Resource Icons */
+.resource-icon {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--asu-maroon), var(--asu-gold));
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.resource-icon.alt {
+    background: linear-gradient(135deg, var(--asu-gold), var(--asu-maroon));
+}
+
+.resource-icon i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Resource Content */
+.resource-card h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.resource-card p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Resource Links */
+.resource-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--asu-maroon);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+    background: var(--asu-gold);
+    color: var(--asu-maroon);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(255, 198, 39, 0.3);
+}
+
+.resource-link.disabled {
+    background: #9ca3af;
+    color: #6b7280;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.resource-link.disabled:hover {
+    background: #9ca3af;
+    color: #6b7280;
+    transform: none;
+    box-shadow: none;
+}
+
+.resource-link i {
+    margin-left: 0.5rem;
+}
+
+/* Additional Resources Section */
+.additional-resources {
+    margin-top: 4rem;
+    background: linear-gradient(135deg, var(--asu-maroon) 0%, var(--asu-gold) 50%, var(--asu-maroon) 100%);
+    background-size: 200% 200%;
+    border-radius: 1rem;
+    padding: 3rem;
+    color: white;
+    text-align: center;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.additional-resources h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.additional-resources p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.additional-resources .cta-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--asu-maroon);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.125rem;
+}
+
+.additional-resources .cta-link:hover {
+    background: var(--asu-gold);
+    color: var(--asu-maroon);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.3);
+}
+
+.additional-resources .cta-link i {
+    margin-left: 0.5rem;
+}
+
+/* Enhanced animations */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .additional-resources {
+        padding: 2rem 1rem;
+    }
+}

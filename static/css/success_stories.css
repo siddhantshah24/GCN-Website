@@ -1,0 +1,149 @@
+/* Success Stories Page Styles */
+
+/* Hero Section */
+.success-stories-hero {
+    padding: 2rem 0;
+}
+
+/* About Section */
+.success-stories-about {
+    padding: 2rem 0;
+}
+
+/* Stories Grid */
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Story Cards */
+.story-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
+    transition: all 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Story Header */
+.story-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.story-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--asu-gold);
+}
+
+.story-info h3 {
+    color: var(--asu-maroon);
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.story-info .position {
+    color: var(--asu-gold);
+    margin: 0;
+    font-weight: 600;
+}
+
+.story-info .details {
+    color: #6b7280;
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Story Quote */
+.story-quote {
+    font-style: italic;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--asu-gold);
+}
+
+/* Story Tags */
+.story-tags {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.story-tag {
+    background: rgba(140, 29, 64, 0.1);
+    color: var(--asu-maroon);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+}
+
+/* Share Story Section */
+.share-story {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.share-story h2 {
+    color: var(--asu-maroon);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.share-story .about-subtitle {
+    margin-bottom: 2rem;
+}
+
+.share-story .btn {
+    background: var(--asu-maroon);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.share-story .btn:hover {
+    background: var(--asu-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.2);
+}
+
+/* Enhanced animations */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+}

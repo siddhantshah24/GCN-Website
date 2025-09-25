@@ -1,0 +1,203 @@
+/* Past Events Page Styles */
+
+/* Hero Section */
+.past-events-hero {
+    padding: 2rem 0;
+}
+
+/* About Section */
+.past-events-about {
+    padding: 2rem 0;
+}
+
+/* Events List */
+.events-list {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.event-item {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
+    border-left: 4px solid #6b7280;
+    opacity: 0.8;
+    /* Optimized transition - only animate transform, box-shadow, and opacity */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.2s ease-out;
+    will-change: transform, box-shadow, opacity;
+}
+
+.event-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(140, 29, 64, 0.15);
+    opacity: 1 !important;
+}
+
+/* Event Content */
+.event-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+}
+
+.event-details h3 {
+    color: var(--asu-maroon);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.event-details p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.meta-item i {
+    color: var(--asu-gold);
+}
+
+.event-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    /* Optimized transition - only animate background-color, transform, and box-shadow */
+    transition: background-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    will-change: background-color, transform, box-shadow;
+}
+
+.btn-primary {
+    background: var(--asu-maroon);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--asu-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 15px -3px rgba(140, 29, 64, 0.2);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--asu-gold);
+    border: 2px solid var(--asu-gold);
+}
+
+.btn-secondary:hover {
+    background: var(--asu-gold);
+    color: var(--asu-maroon);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 15px -3px rgba(140, 29, 64, 0.2);
+}
+
+.additional-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    border-left: 4px solid #6b7280;
+}
+
+.additional-info h4 {
+    color: var(--asu-maroon);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.additional-info p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Optimized animations - reduced duration and complexity */
+.fade-in {
+    animation: fadeInUp 0.5s ease-out;
+    will-change: opacity, transform;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Touch Device Detection and Hover Disabling */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover effects on touch devices */
+    .event-item:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background: inherit !important;
+        color: inherit !important;
+        opacity: inherit !important;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .event-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .event-actions {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        text-align: center;
+        width: 100%;
+    }
+    
+    /* Reduce animation intensity on mobile for better performance */
+    .event-item:hover {
+        transform: translateY(-1px);
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: translateY(0);
+    }
+}

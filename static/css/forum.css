@@ -1,0 +1,102 @@
+/* Forum Page Styles */
+
+/* Hero Section */
+.forum-hero {
+    padding: 2rem 0;
+}
+
+/* About Section */
+.forum-about {
+    padding: 2rem 0;
+}
+
+/* Forum Content */
+.forum-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Forum Info */
+.forum-info {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
+}
+
+.forum-info h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+}
+
+/* Forum Guidelines */
+.forum-guidelines {
+    list-style: none;
+    padding: 0;
+}
+
+.guideline-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+.guideline-icon {
+    color: var(--asu-gold);
+}
+
+.guideline-text {
+    flex: 1;
+}
+
+/* Access Forum Section */
+.access-forum {
+    text-align: center;
+}
+
+.access-forum h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+}
+
+.access-forum p {
+    margin-bottom: 2rem;
+}
+
+.access-forum .btn {
+    background: var(--asu-maroon);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.access-forum .btn:hover {
+    background: var(--asu-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.2);
+}
+
+/* Enhanced animations */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

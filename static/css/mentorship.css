@@ -1,0 +1,110 @@
+/* Mentorship Page Styles */
+
+/* Hero Section */
+.mentorship-hero {
+    padding: 2rem 0;
+}
+
+/* About Section */
+.mentorship-about {
+    padding: 2rem 0;
+}
+
+/* Mentorship Content */
+.mentorship-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Mentorship Info */
+.mentorship-info {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
+}
+
+.mentorship-info h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+}
+
+/* Process Steps */
+.process-steps {
+    list-style: none;
+    padding: 0;
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+.step-number {
+    width: 2rem;
+    height: 2rem;
+    background: var(--asu-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.step-text {
+    flex: 1;
+}
+
+/* Apply Section */
+.apply-section {
+    text-align: center;
+}
+
+.apply-section h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+}
+
+.apply-section p {
+    margin-bottom: 2rem;
+}
+
+.apply-section .btn {
+    background: var(--asu-maroon);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.apply-section .btn:hover {
+    background: var(--asu-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.2);
+}
+
+/* Enhanced animations */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

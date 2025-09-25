@@ -1,0 +1,186 @@
+/* Events Page Styles */
+
+/* Hero Section */
+.events-hero {
+    padding: 2rem 0;
+}
+
+/* About Section */
+.events-about {
+    padding: 2rem 0;
+}
+
+/* Events Grid */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Event Categories */
+.event-category {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    /* Optimized transition - only animate transform and box-shadow */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    will-change: transform, box-shadow;
+}
+
+.event-category:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.event-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
+    /* Optimized transition - only animate transform and box-shadow */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    height: 100%;
+    will-change: transform, box-shadow;
+}
+
+.event-category:hover .event-card {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px -10px rgba(140, 29, 64, 0.15);
+}
+
+/* Event Icons */
+.event-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* Event Content */
+.event-card h3 {
+    color: var(--asu-maroon);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.event-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.newsletter-section h2 {
+    color: var(--asu-maroon);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-out;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: var(--asu-maroon);
+}
+
+.newsletter-form button {
+    background: var(--asu-maroon);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    /* Optimized transition - only animate background-color, transform, and box-shadow */
+    transition: background-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    will-change: background-color, transform, box-shadow;
+}
+
+.newsletter-form button:hover {
+    background: var(--asu-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 15px -3px rgba(140, 29, 64, 0.2);
+}
+
+/* Optimized animations - reduced duration and complexity */
+.fade-in {
+    animation: fadeInUp 0.5s ease-out;
+    will-change: opacity, transform;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Touch Device Detection and Hover Disabling */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover effects on touch devices */
+    .event-category:hover,
+    .event-category:hover .event-card,
+    .newsletter-form button:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background: inherit !important;
+        color: inherit !important;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* Reduce animation intensity on mobile for better performance */
+    .event-category:hover .event-card {
+        transform: translateY(-2px);
+    }
+    
+    .newsletter-form button:hover {
+        transform: translateY(0);
+    }
+}
