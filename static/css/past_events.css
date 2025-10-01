@@ -22,7 +22,7 @@
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 10px 15px -3px rgba(140, 29, 64, 0.1);
-    border-left: 4px solid #6b7280;
+    border-left: 4px solid var(--asu-gold);
     opacity: 0.8;
     /* Optimized transition - only animate transform, box-shadow, and opacity */
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.2s ease-out;
@@ -94,6 +94,8 @@
     /* Optimized transition - only animate background-color, transform, and box-shadow */
     transition: background-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
     will-change: background-color, transform, box-shadow;
+    display: block;
+    margin: 0 auto;
 }
 
 .btn-primary {
@@ -125,7 +127,6 @@
     padding: 1rem;
     background: #f9fafb;
     border-radius: 0.5rem;
-    border-left: 4px solid #6b7280;
 }
 
 .additional-info h4 {

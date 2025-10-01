@@ -860,6 +860,16 @@ a {
   transform: translateX(4px);
 }
 
+.contact-list span,
+.contact-list li span {
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-weight: 400;
+  font-style: normal;
+  color: #d1d5db;
+}
+
 .social-list a {
   color: #d1d5db;
   font-size: 0.875rem;
