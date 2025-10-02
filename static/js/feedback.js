@@ -203,43 +203,46 @@ class FeedbackForm {
     }
     
     async handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
         
-        if (!this.validateForm() || this.isSubmitting) {
-            return;
-        }
+        if (!this.validateForm() || this.isSubmitting) return
         
-        this.isSubmitting = true;
-        this.submitBtn.disabled = true;
-        this.submitBtn.classList.add('loading');
-        
+        this.isSubmitting = true
+        this.submitBtn.disabled = true
+        this.submitBtn.classList.add('loading')
+
         try {
-            // For Netlify Forms, we need to submit the form normally
-            // The form will be processed by Netlify's servers
-            // We'll show a success message and then submit the form
-            
-            // Show success message
-            this.showMessage('Thank you for your feedback! Submitting...', 'success');
-            
-            // Track successful submission
-            this.trackEvent('feedback_submitted_successfully');
-            
-            // Submit the form to Netlify
-            // The form will redirect to a success page or show a success message
-            // For now, we'll simulate the submission and show the thank you popup
-            setTimeout(() => {
-                this.showThankYouPopup();
-            }, 1000);
-            
-        } catch (error) {
-            // Error submitting feedback
-            this.showMessage('An error occurred while submitting feedback. Please try again.', 'error');
+            const payload = {
+                fields: {
+                    Name: this.form.name.value,
+                    Email: this.form.email.value,
+                    Type: this.form.feedbackType.value,
+                    Content: this.form.message.value,
+                    Source: 'Website',
+                    PageURL: window.location.href
+                }
+            }
+
+            const response = await fetch('https://feedback-worker.gcn-feedback.workers.dev', { 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+
+            const result = await response.json()
+            if (!response.ok) throw new Error(JSON.stringify(result))
+
+            this.showThankYouPopup()
+        } catch (err) {
+            console.error('Feedback submission error', err)
+            this.showMessage('An error occurred while submitting feedback. Please try again.', 'error')
         } finally {
-            this.isSubmitting = false;
-            this.submitBtn.disabled = false;
-            this.submitBtn.classList.remove('loading');
+            this.isSubmitting = false
+            this.submitBtn.disabled = false
+            this.submitBtn.classList.remove('loading')
         }
     }
+
     
     showMessage(message, type) {
         this.messageContainer.textContent = message;
