@@ -259,6 +259,13 @@
     animation: slide-in-up 0.8s ease-out 0.2s both;
 }
 
+/* "Welcome to" text color - specific to home page only */
+.home-page .hero-title .welcome-text {
+    color: white !important;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
 @keyframes slide-in-up {
     from {
         opacity: 0;
@@ -439,10 +446,13 @@
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .feature-item {
@@ -1096,46 +1106,7 @@
     transform: translateX(3px);
 }
 
-/* Partners Section */
-.partners {
-    padding: 6rem 0;
-    background: var(--bg-light);
-}
-
-.partners-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    align-items: center;
-}
-
-.partner-logo {
-    background: var(--bg-white);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-light);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.partner-logo:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-.partner-logo img {
-    max-width: 100%;
-    height: auto;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.partner-logo:hover img {
-    filter: grayscale(0%);
-}
+/* Partners Section - Now handled by partners-carousel.css */
 
 /* CTA Section */
 .cta {
@@ -1275,6 +1246,13 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 900px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1319,11 +1297,17 @@
     .features-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     
     .feature-item {
         padding: 2rem 1.5rem;
         animation: none;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .feature-item:hover {

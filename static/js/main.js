@@ -108,15 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const successMessage = document.createElement('div');
                 successMessage.className = 'success-message';
                 successMessage.textContent = 'Thank you! Your message has been sent successfully.';
-                successMessage.style.cssText = `
-                    background: #10b981;
-                    color: white;
-                    padding: 1rem;
-                    border-radius: 0.5rem;
-                    margin-top: 1rem;
-                    text-align: center;
-                `;
-                
                 form.appendChild(successMessage);
                 form.reset();
                 
@@ -150,38 +141,31 @@ document.addEventListener('DOMContentLoaded', function() {
     backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
     backToTopButton.className = 'back-to-top';
     backToTopButton.setAttribute('aria-label', 'Back to top');
-    backToTopButton.style.cssText = `
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: var(--asu-maroon);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 3rem;
-        height: 3rem;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `;
-    
     document.body.appendChild(backToTopButton);
 
-    window.addEventListener('scroll', function() {
+    // Function to toggle button visibility
+    function toggleBackToTopButton() {
         if (window.pageYOffset > 300) {
-            backToTopButton.style.opacity = '1';
-            backToTopButton.style.visibility = 'visible';
+            // Use requestAnimationFrame to ensure smooth animation
+            requestAnimationFrame(() => {
+                backToTopButton.classList.add('visible');
+            });
         } else {
-            backToTopButton.style.opacity = '0';
-            backToTopButton.style.visibility = 'hidden';
+            requestAnimationFrame(() => {
+                backToTopButton.classList.remove('visible');
+            });
         }
-    });
+    }
+
+    // Use throttled scroll handler for performance
+    const scrollHandler = window.GCNUtils?.throttle(toggleBackToTopButton, 100) || toggleBackToTopButton;
+
+    // Check initial scroll position on page load with a small delay to ensure DOM is ready
+    setTimeout(() => {
+        toggleBackToTopButton();
+    }, 100);
+
+    window.addEventListener('scroll', scrollHandler);
 
     backToTopButton.addEventListener('click', function() {
         window.scrollTo({
@@ -189,21 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
-
-    // Add hover effect to back to top button (only on non-touch devices)
-    if (!isTouchDevice) {
-        backToTopButton.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.background = 'var(--asu-gold)';
-            this.style.color = 'var(--asu-maroon)';
-        });
-
-        backToTopButton.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-            this.style.background = 'var(--asu-maroon)';
-            this.style.color = 'white';
-        });
-    }
 
     // Testimonials carousel (if exists)
     const testimonialContainer = document.querySelector('.testimonials-container');
@@ -245,88 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
         testimonialContainer.appendChild(nextButton);
     }
 
-    // Add loading animation
+    // Add loading animation - CSS is now in loading-states.css
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
-
-    // Add CSS for loading state
-    const style = document.createElement('style');
-    style.textContent = `
-        body:not(.loaded) {
-            overflow: hidden;
-        }
-        
-        body:not(.loaded)::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--asu-maroon);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        body:not(.loaded)::after {
-            content: '';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--asu-gold);
-            border-top: 3px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            z-index: 10000;
-        }
-        
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        
-        .error {
-            border-color: #ef4444 !important;
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
-        }
-    `;
-    document.head.appendChild(style);
 });
 
-// Utility functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// Export functions for use in other scripts
-window.GCNUtils = {
-    debounce,
-    throttle
-}; 
+// Utility functions are now in utils.js
+// This file uses window.GCNUtils if available, otherwise falls back to local implementations 

@@ -64,45 +64,25 @@ function animateCounter(statCard) {
 }
 
 function initializeAnimations() {
-    // Enhanced intersection observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
+    // Use utility function if available, otherwise create observer
+    const observer = window.GCNUtils?.createIntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
-                // Add staggered animation for grid items
-                if (entry.target.classList.contains('feature-item') || 
-                    entry.target.classList.contains('program-card')) {
-                    const delay = entry.target.dataset.aosDelay || 0;
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, delay);
-                }
             }
         });
-    }, observerOptions);
+    }) || new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     
     // Observe all fade-in elements
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
     });
-    
-    // Trigger hero animations with enhanced timing
-    setTimeout(() => {
-        const heroElements = document.querySelectorAll('.hero-content .fade-in, .hero-buttons');
-        heroElements.forEach((el, index) => {
-            setTimeout(() => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }, index * 150); // Staggered timing
-        });
-    }, 100);
 }
 
 function initializeScrollAnimations() {
@@ -168,31 +148,9 @@ function initializeParallaxEffects() {
 }
 
 function initializeHoverEffects() {
-    // Enhanced hover effects for all interactive elements
-    const interactiveElements = document.querySelectorAll('.feature-item, .program-card, .stat-card, .testimonial-card, .partner-logo');
-    
-    interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '';
-        });
-    });
-    
-    // Special hover effect for buttons
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.05)';
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+    // Hover effects are now handled by CSS
+    // This function can be removed or used for additional JS-only hover logic
+    // CSS transitions handle the visual effects more efficiently
 }
 
 function initializeTestimonialCarousel() {
@@ -274,78 +232,17 @@ function initializeSmoothScrolling() {
     });
 }
 
-// Performance optimizations
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Optimized scroll handler with throttling
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-const optimizedScrollHandler = throttle(() => {
+// Performance optimizations - use utilities from utils.js
+const optimizedScrollHandler = window.GCNUtils?.throttle(() => {
     // Any scroll-based functionality can be added here
-}, 16); // ~60fps
+}, 16) || (() => {}); // ~60fps
 
 window.addEventListener('scroll', optimizedScrollHandler);
 
-// Add loading animation
+// Add loading animation - CSS handles the visual states
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
-    
-    // Trigger entrance animations
-    setTimeout(() => {
-        document.querySelectorAll('.hero-content > *').forEach((el, index) => {
-            setTimeout(() => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }, index * 200);
-        });
-    }, 100);
 });
 
-// Add CSS for loading state
-const style = document.createElement('style');
-style.textContent = `
-    .hero-content > * {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
-    }
-    
-    .feature-item, .program-card {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease-out;
-    }
-    
-    .stat-card {
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 0.6s ease-out;
-    }
-    
-    .loaded .hero-content > * {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style);
+// CSS for loading states is now in loading-states.css
+// No need to inject styles dynamically

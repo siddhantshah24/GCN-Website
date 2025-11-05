@@ -1,0 +1,178 @@
+/* Partners Carousel - Unique Animation Style */
+/* This carousel uses CSS variables from style.css for consistency */
+
+.partners {
+    padding: 6rem 0;
+    background: var(--bg-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.partners::before,
+.partners::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.partners::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-light), transparent);
+}
+
+.partners::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-light), transparent);
+}
+
+.partners-carousel-container {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.partners-carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: carousel-scroll 40s linear infinite;
+    will-change: transform;
+}
+
+/* Pause on hover */
+.partners-carousel-container:hover .partners-carousel-track {
+    animation-play-state: paused;
+}
+
+/* Reverse direction for seamless loop */
+.partners-carousel-track-reverse {
+    animation-direction: reverse;
+    animation-duration: 35s;
+}
+
+@keyframes carousel-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.partner-logo {
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 200px;
+    height: 120px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Hover effect with 3D transform */
+.partner-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 198, 39, 0.2),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.partner-logo:hover::before {
+    left: 100%;
+}
+
+.partner-logo:hover {
+    transform: translateY(-8px) scale(1.05) rotateY(5deg);
+    box-shadow: var(--shadow-medium), 0 0 30px rgba(255, 198, 39, 0.2);
+    border-color: rgba(255, 198, 39, 0.5);
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 80px;
+    height: auto;
+    filter: grayscale(100%) opacity(0.7);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    object-fit: contain;
+}
+
+.partner-logo:hover img {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+/* Career link overlay */
+.partner-logo::after {
+    content: '🔗';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    opacity: 0;
+    font-size: 1.2rem;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.partner-logo:hover::after {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .partners-carousel-track {
+        gap: 1.5rem;
+        animation-duration: 30s;
+    }
+    
+    .partner-logo {
+        width: 150px;
+        height: 100px;
+        padding: 1rem;
+    }
+    
+    .partners::before,
+    .partners::after {
+        width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-carousel-track {
+        gap: 1rem;
+        animation-duration: 25s;
+    }
+    
+    .partner-logo {
+        width: 120px;
+        height: 80px;
+        padding: 0.75rem;
+    }
+    
+    .partners::before,
+    .partners::after {
+        width: 40px;
+    }
+}
+

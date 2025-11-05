@@ -234,7 +234,12 @@ class FeedbackForm {
 
             this.showThankYouPopup()
         } catch (err) {
-            console.error('Feedback submission error', err)
+            // Use utility function for error logging (production-safe)
+            if (window.GCNUtils?.logError) {
+                window.GCNUtils.logError(err, 'FeedbackForm');
+            } else {
+                console.error('Feedback submission error', err);
+            }
             this.showMessage('An error occurred while submitting feedback. Please try again.', 'error')
         } finally {
             this.isSubmitting = false
