@@ -291,7 +291,7 @@ a {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: var(--asu-maroon);
+  color: white;
 }
 
 @media (min-width: 768px) {
